@@ -74,8 +74,7 @@ Analyzes a project's dependencies and creates a searchable index of their docume
       "MODEL_NAME": "Xenova/all-MiniLM-L6-v2", // Optional, default shown
       "DEBUG": "true", // Optional
       "MIN_CHUNK_SIZE": "800", // Optional, default shown
-      "MAX_CHUNK_SIZE": "8000", // Optional, default shown
-      "CHUNKS_RETURNED": "5" // Optional, default shown
+      "MAX_CHUNK_SIZE": "8000" // Optional, default shown
     }
   }
 }
@@ -113,7 +112,7 @@ Returns:
 - Source information (repository, file path)
 - Similarity scores for each result
 
-## Technical Architecture
+## Architecture
 
 Dependency Context is built with a modular TypeScript architecture:
 
@@ -203,10 +202,11 @@ If you encounter "API rate limit exceeded" errors:
 ````
 
 3. Or add it to your `.env` file:
+
    ```
    # Optional but recommended for higher API rate limits
    GITHUB_TOKEN=your_token_here
-   
+
    # Optional settings with defaults shown below
    MIN_CHUNK_SIZE=800
    MAX_CHUNK_SIZE=8000
@@ -240,8 +240,8 @@ git clone https://github.com/yourusername/dependency-context.git
 cd dependency-context
 npm install
 
-# Run in development mode
-npm run dev
+# Run locally with fastmcp dev
+npx fastmcp dev src/index.ts
 ```
 
 ## Future Enhancements
