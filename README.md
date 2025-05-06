@@ -34,7 +34,7 @@ If a `dependency-context.json` file is not present, Dependency Context falls bac
       "command": "npx",
       "args": ["-y", "--package=dependency-context", "dependency-context"],
       "env": {
-        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN_HERE",
+        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN_HERE", // Optional: Avoids rate limits 
         "MODEL_NAME": "Xenova/all-MiniLM-L6-v2",
         "DEBUG": "false"
       }
@@ -107,7 +107,7 @@ Returns:
 - Source information (repository, file path)
 - Similarity scores for each result
 
-## Technical Architecture
+## Architecture
 
 Dependency Context is built with a modular TypeScript architecture:
 
@@ -228,8 +228,8 @@ git clone https://github.com/yourusername/dependency-context.git
 cd dependency-context
 npm install
 
-# Run in development mode
-npm run dev
+# Run locally with fastmcp dev
+npx fastmcp dev src/index.ts
 ```
 
 ## Future Enhancements
