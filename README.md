@@ -1,12 +1,10 @@
 # Dependency Context
 
-## by DarianB
+### by [@darianb](https://x.com/darianbailey14)
 
 An MCP server that provides AI assistants with contextual access to your project's dependency documentation, enabling more accurate responses about libraries and frameworks used in your codebase.
 
 ## Configuration
-
-### Recommended Approach: dependency-constext.json
 
 The recommended way to specify which dependencies you want to index is by creating a custom `dependency-context.json` file in your project root. This allows you to:
 
@@ -23,7 +21,7 @@ Create a `dependency-context.json` file in your project root with the following 
 }
 ```
 
-If a `dependency-context.json` file is not present, Dependency Context falls back to scanning package.json or requirements.txt.
+If a `dependency-context.json` file is not present, Dependency Context falls back to scanning `package.json` or `requirements.txt`.
 
 ## Quick Start
 
@@ -59,13 +57,13 @@ Can you initialize dependency-context?
 
 Dependency Context provides two main capabilities through its MCP interface:
 
-### 1. analyzeAndIndexDependencies
+### 1. InitializeDependencyIndex
 
 Analyzes a project's dependencies and creates a searchable index of their documentation.
 
 ```json
 {
-  "capability": "analyzeAndIndexDependencies",
+  "capability": "InitializeDependencyIndex",
   "parameters": {
     "project_path": "/path/to/your/project",
     "env_vars": {
