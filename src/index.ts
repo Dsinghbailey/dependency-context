@@ -62,7 +62,6 @@ const transportType = process.argv.includes("--http-stream")
 
 if (transportType === "httpStream") {
   // Log that the server is starting *before* the await
-  console.log(`MCP Server listening on port ${PORT}`);
   // Start the server
   server.start({
     transportType: "httpStream",
@@ -76,5 +75,4 @@ if (transportType === "httpStream") {
   server.start({
     transportType: "stdio",
   });
-  console.log(`MCP Server listening on stdio`);
 }
