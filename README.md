@@ -100,7 +100,8 @@ Performs semantic search over indexed dependency documentation.
     "query": "How do I handle authentication?",
     "repository_context": "express", // Optional: limit to a specific dependency
     "env_vars": {
-      "MODEL_NAME": "Xenova/all-MiniLM-L6-v2"
+      "MODEL_NAME": "Xenova/all-MiniLM-L6-v2",
+      "CHUNKS_RETURNED": "5" // Optional, default shown
     }
   }
 }
