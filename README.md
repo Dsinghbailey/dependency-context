@@ -264,8 +264,6 @@ npm run dev
 ### Low Priority
 
 - [x] Create comprehensive documentation
-- [ ] Add automated benchmark tests for embedding generation
-- [ ] Support for offline mode with pre-downloaded documentation
 
 ## License
 
