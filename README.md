@@ -259,8 +259,6 @@ npm run dev
 - [ ] Support for additional package managers (Maven, Go, Rust)
 - [ ] Add progress reporting for long-running index operations
 - [ ] Enhance chunking algorithm to better respect Markdown structure
-- [ ] Create web UI for viewing indexed dependencies and documentation
-- [ ] Add telemetry and usage statistics (opt-in)
 - [ ] Support for non-GitHub repositories (GitLab, Bitbucket)
 
 ### Low Priority
