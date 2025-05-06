@@ -251,6 +251,7 @@ npm run dev
 - [x] Implement vector store creation and indexing
 - [x] Set up MCP endpoint for semantic search
 - [x] Add environment variable support through multiple channels (system, project, MCP params)
+- [ ] Add parameters for chunk size and top-k returns to functions
 - [ ] Add proper error handling and retry mechanisms for GitHub API
 
 ### Medium Priority
@@ -265,7 +266,6 @@ npm run dev
 ### Low Priority
 
 - [x] Create comprehensive documentation
-- [ ] Prepare for npm package publication
 - [ ] Add automated benchmark tests for embedding generation
 - [ ] Support for offline mode with pre-downloaded documentation
 
