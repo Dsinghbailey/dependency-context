@@ -1,6 +1,6 @@
 {
   "name": "dependency-context",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "MCP server for providing dependency documentation context to AI assistants",
   "main": "dist/index.js",
   "bin": {

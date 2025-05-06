@@ -4,11 +4,11 @@ import { analyzeAndIndexDependencies } from "./capabilities/analyze";
 import { searchDependencyDocs } from "./capabilities/search";
 
 // Server configuration
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 8080;
+const PORT = process.env.DC_PORT ? parseInt(process.env.DC_PORT, 10) : 3006;
 
 const server = new FastMCP({
   name: "Dependency Documentation Server",
-  version: "1.0.0",
+  version: "1.0.2",
 });
 
 // Define parameters for the analyze tool using Zod
