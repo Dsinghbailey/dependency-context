@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { FastMCP } from "fastmcp";
 import { z } from "zod";
 import { analyzeAndIndexDependencies } from "./capabilities/analyze";
@@ -8,7 +10,7 @@ const PORT = process.env.DC_PORT ? parseInt(process.env.DC_PORT, 10) : 3006;
 
 const server = new FastMCP({
   name: "Dependency Documentation Server",
-  version: "1.0.3",
+  version: "1.0.4",
 });
 
 // Define parameters for the analyze tool using Zod
