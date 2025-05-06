@@ -16,6 +16,9 @@ describe('Config Tests', () => {
     delete process.env.GITHUB_TOKEN;
     delete process.env.MODEL_NAME;
     delete process.env.DEBUG;
+    delete process.env.MIN_CHUNK_SIZE;
+    delete process.env.MAX_CHUNK_SIZE;
+    delete process.env.CHUNKS_RETURNED;
   });
 
   test('should return default config when no environment variables are set', () => {
@@ -25,7 +28,10 @@ describe('Config Tests', () => {
       port: 3000,
       embeddingModel: 'Xenova/all-MiniLM-L6-v2',
       storageDir: '.dependency-context',
-      debugMode: false
+      debugMode: false,
+      minChunkSize: 800,
+      maxChunkSize: 8000,
+      chunksReturned: 5
     });
   });
 
@@ -35,6 +41,9 @@ describe('Config Tests', () => {
     process.env.GITHUB_TOKEN = 'test-token';
     process.env.MODEL_NAME = 'custom-model';
     process.env.DEBUG = 'true';
+    process.env.MIN_CHUNK_SIZE = '500';
+    process.env.MAX_CHUNK_SIZE = '10000';
+    process.env.CHUNKS_RETURNED = '10';
     
     const config = getConfig();
     
@@ -43,7 +52,10 @@ describe('Config Tests', () => {
       githubToken: 'test-token',
       embeddingModel: 'custom-model',
       storageDir: '.dependency-context',
-      debugMode: true
+      debugMode: true,
+      minChunkSize: 500,
+      maxChunkSize: 10000,
+      chunksReturned: 10
     });
   });
 
@@ -57,7 +69,10 @@ describe('Config Tests', () => {
     (dotenv.parse as jest.Mock).mockReturnValue({
       GITHUB_TOKEN: 'project-token',
       MODEL_NAME: 'project-model',
-      DEBUG: 'true'
+      DEBUG: 'true',
+      MIN_CHUNK_SIZE: '400',
+      MAX_CHUNK_SIZE: '12000',
+      CHUNKS_RETURNED: '15'
     });
     
     // Mock fs.readFileSync
@@ -76,7 +91,10 @@ describe('Config Tests', () => {
       githubToken: 'project-token',
       embeddingModel: 'project-model',
       storageDir: '.dependency-context',
-      debugMode: true
+      debugMode: true,
+      minChunkSize: 400,
+      maxChunkSize: 12000,
+      chunksReturned: 15
     });
   });
 

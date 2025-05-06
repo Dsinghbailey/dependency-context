@@ -12,6 +12,9 @@ export interface Config {
   embeddingModel: string;
   storageDir: string;
   debugMode: boolean;
+  minChunkSize: number;
+  maxChunkSize: number;
+  chunksReturned: number;
 }
 
 // Default configuration
@@ -19,7 +22,10 @@ const defaultConfig: Config = {
   port: 3000,
   embeddingModel: 'Xenova/all-MiniLM-L6-v2',
   storageDir: '.dependency-context',
-  debugMode: false
+  debugMode: false,
+  minChunkSize: 800,
+  maxChunkSize: 8000,
+  chunksReturned: 5
 };
 
 /**
@@ -46,6 +52,20 @@ export function getConfig(projectPath?: string): Config {
   // Debug mode
   if (process.env.DEBUG === 'true') {
     config.debugMode = true;
+  }
+  
+  // Chunk sizes
+  if (process.env.MIN_CHUNK_SIZE) {
+    config.minChunkSize = parseInt(process.env.MIN_CHUNK_SIZE, 10);
+  }
+  
+  if (process.env.MAX_CHUNK_SIZE) {
+    config.maxChunkSize = parseInt(process.env.MAX_CHUNK_SIZE, 10);
+  }
+  
+  // Number of chunks to return in search results
+  if (process.env.CHUNKS_RETURNED) {
+    config.chunksReturned = parseInt(process.env.CHUNKS_RETURNED, 10);
   }
 
   // Try to load project-specific .env if a project path is provided
@@ -81,6 +101,18 @@ function tryLoadProjectEnv(projectPath: string, config: Config): void {
         
         if (envConfig.DEBUG === 'true') {
           config.debugMode = true;
+        }
+        
+        if (envConfig.MIN_CHUNK_SIZE) {
+          config.minChunkSize = parseInt(envConfig.MIN_CHUNK_SIZE, 10);
+        }
+        
+        if (envConfig.MAX_CHUNK_SIZE) {
+          config.maxChunkSize = parseInt(envConfig.MAX_CHUNK_SIZE, 10);
+        }
+        
+        if (envConfig.CHUNKS_RETURNED) {
+          config.chunksReturned = parseInt(envConfig.CHUNKS_RETURNED, 10);
         }
         
         break; // Stop after first valid .env file

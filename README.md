@@ -34,9 +34,12 @@ If a `dependency-context.json` file is not present, Dependency Context falls bac
       "command": "npx",
       "args": ["-y", "--package=dependency-context", "dependency-context"],
       "env": {
-        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN_HERE",
-        "MODEL_NAME": "Xenova/all-MiniLM-L6-v2",
-        "DEBUG": "false"
+        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN_HERE", // Optional but recommended
+        "MODEL_NAME": "Xenova/all-MiniLM-L6-v2", // Optional, default shown
+        "DEBUG": "false", // Optional, default shown
+        "MIN_CHUNK_SIZE": "800", // Optional, default shown
+        "MAX_CHUNK_SIZE": "8000", // Optional, default shown
+        "CHUNKS_RETURNED": "5" // Optional, default shown
       }
     }
   }
@@ -67,9 +70,12 @@ Analyzes a project's dependencies and creates a searchable index of their docume
   "parameters": {
     "project_path": "/path/to/your/project",
     "env_vars": {
-      "GITHUB_TOKEN": "your_github_token",
-      "MODEL_NAME": "Xenova/all-MiniLM-L6-v2",
-      "DEBUG": "true"
+      "GITHUB_TOKEN": "your_github_token", // Optional but recommended
+      "MODEL_NAME": "Xenova/all-MiniLM-L6-v2", // Optional, default shown
+      "DEBUG": "true", // Optional
+      "MIN_CHUNK_SIZE": "800", // Optional, default shown
+      "MAX_CHUNK_SIZE": "8000", // Optional, default shown
+      "CHUNKS_RETURNED": "5" // Optional, default shown
     }
   }
 }
@@ -198,7 +204,13 @@ If you encounter "API rate limit exceeded" errors:
 
 3. Or add it to your `.env` file:
    ```
+   # Optional but recommended for higher API rate limits
    GITHUB_TOKEN=your_token_here
+   
+   # Optional settings with defaults shown below
+   MIN_CHUNK_SIZE=800
+   MAX_CHUNK_SIZE=8000
+   CHUNKS_RETURNED=5
    ```
 
 ### Empty Search Results
@@ -251,7 +263,7 @@ npm run dev
 - [x] Implement vector store creation and indexing
 - [x] Set up MCP endpoint for semantic search
 - [x] Add environment variable support through multiple channels (system, project, MCP params)
-- [ ] Add parameters for chunk size and top-k returns to functions
+- [x] Add parameters for chunk size and top-k returns to functions
 - [ ] Add proper error handling and retry mechanisms for GitHub API
 
 ### Medium Priority

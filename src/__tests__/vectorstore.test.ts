@@ -121,7 +121,7 @@ describe('Vector Store Tests', () => {
       expect(results[0].source_repository).toContain('express');
     });
     
-    test('should limit results to top 5', async () => {
+    test('should limit results to top 5 by default', async () => {
       // Mock vector store exists
       (fs.pathExists as jest.Mock).mockResolvedValue(true);
       
@@ -145,8 +145,47 @@ describe('Vector Store Tests', () => {
         'test query'
       );
       
-      // Verify only top 5 results are returned
+      // Verify only top 5 results are returned by default
       expect(results).toHaveLength(5);
+    });
+    
+    test('should respect chunksReturned config parameter', async () => {
+      // Mock vector store exists
+      (fs.pathExists as jest.Mock).mockResolvedValue(true);
+      
+      // Create mock vector store with 10 entries
+      const mockEntries = Array(10).fill(0).map((_, i) => ({
+        chunk: `Test chunk ${i}`,
+        embedding: [0.1, 0.2, 0.3],
+        metadata: {
+          repository: 'https://github.com/test/repo',
+          file: `/file${i}.md`,
+          dependency: 'test-package'
+        }
+      }));
+      
+      (fs.readJson as jest.Mock).mockResolvedValue({
+        entries: mockEntries
+      });
+      
+      // Test with custom chunksReturned value
+      const results = await vectorstore.searchVectorStore(
+        '/test/project',
+        'test query',
+        undefined, // No repository context
+        {
+          port: 3000,
+          embeddingModel: 'test-model',
+          storageDir: '.test',
+          debugMode: false,
+          minChunkSize: 800,
+          maxChunkSize: 8000,
+          chunksReturned: 8 // Custom number of results
+        }
+      );
+      
+      // Verify custom number of results are returned
+      expect(results).toHaveLength(8);
     });
   });
 });
