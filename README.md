@@ -25,6 +25,8 @@ If a `dependency-context.json` file is not present, Dependency Context falls bac
 
 ## Quick Start
 
+### Option 1: Use MCP with AI Integration (Recommended for Cursor Users)
+
 1. Add the MCP config to your editor (Cursor recommended):
 
 ```json
@@ -48,7 +50,7 @@ If a `dependency-context.json` file is not present, Dependency Context falls bac
 
 2. Enable the MCP in your editor
 
-3. Prompt the AI to initialialize dependency-context
+3. Prompt the AI to initialialize dependency-context. Make sure you are in "Agent" mode.
 
 ```
 Can you initialize dependency-context?
@@ -56,9 +58,39 @@ Can you initialize dependency-context?
 
 4. Prompt the AI like you normally do. It will automatically pull in dependency-context when relevant
 
-## MCP Capabilities
+### Option 2: Direct Download of Documentation (No Vector Database)
 
-Dependency Context provides two main capabilities through its MCP interface:
+If you prefer to just download and browse the dependency documentation without vector search:
+
+1. Install dependency-context:
+
+```bash
+npm install -g dependency-context
+```
+
+2. Download documentation for a project:
+
+```bash
+# From your project directory
+dependency-context download
+
+# Or specify a different project path
+dependency-context download /path/to/your/project
+```
+
+3. Find the documentation in the `dependency-context` folder in your project:
+
+```bash
+# Explore the documentation
+cd dependency-context
+ls
+```
+
+Each dependency will have its own folder containing all the markdown documentation from its repository.
+
+## MCP Tools
+
+Dependency Context provides two main tools through its MCP interface:
 
 ### 1. InitializeDependencyIndex
 
@@ -241,17 +273,12 @@ git clone https://github.com/yourusername/dependency-context.git
 cd dependency-context
 npm install
 
-# Run locally with fastmcp dev
+# Run MCP server locally with fastmcp dev
 npx fastmcp dev src/index.ts
+
+# Test CLI download command
+node src/index.js download ./test-project
 ```
-
-## Future Enhancements
-
-- **Additional Package Managers**: Support for pom.xml, go.mod, and other dependency formats (note: custom dependencies.json is already supported as the recommended approach)
-- **Incremental Indexing**: Avoid reprocessing unchanged repositories
-- **Configurable Chunking**: Custom strategies for document splitting
-- **Alternative Models**: Support for different embedding models
-- **Caching Layer**: Improved performance for frequently accessed documentation
 
 ## Project Todo List
 
@@ -265,6 +292,7 @@ npx fastmcp dev src/index.ts
 - [x] Set up MCP endpoint for semantic search
 - [x] Add environment variable support through multiple channels (system, project, MCP params)
 - [x] Add parameters for chunk size and top-k returns to functions
+- [x] Add CLI mode to download raw documentation
 - [ ] Add proper error handling and retry mechanisms for GitHub API
 
 ### Medium Priority
@@ -277,6 +305,14 @@ npx fastmcp dev src/index.ts
 ### Low Priority
 
 - [x] Create comprehensive documentation
+
+### Future Enhancements
+
+- **Additional Package Managers**: Support for pom.xml, go.mod, and other dependency formats (note: custom dependencies.json is already supported as the recommended approach)
+- **Incremental Indexing**: Avoid reprocessing unchanged repositories
+- **Configurable Chunking**: Custom strategies for document splitting
+- **Alternative Models**: Support for different embedding models
+- **Caching Layer**: Improved performance for frequently accessed documentation
 
 ## License
 

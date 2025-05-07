@@ -22,6 +22,6 @@ module.exports = {
   },
   // Ignore node_modules except specifically needed packages
   transformIgnorePatterns: [
-    "node_modules/(?!(@xenova/transformers)/)"
+    "node_modules/(?!(@xenova/transformers|fastmcp)/)"
   ]
 };
