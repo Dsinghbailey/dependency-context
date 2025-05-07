@@ -2,7 +2,7 @@
 
 ### by [@darianb](https://x.com/darianbailey14)
 
-An MCP server that provides AI assistants with contextual access to your project's dependency documentation, enabling more accurate responses about libraries and frameworks used in your codebase.
+An MCP server and command line tool that provides AI assistants with contextual access to your project's dependency documentation, enabling more accurate responses about libraries and frameworks used in your codebase.
 
 ## Configuration
 
